@@ -8,7 +8,7 @@ import plotly.express as px
 from datetime import datetime, timezone
 
 
-# SETUP DA PAGINA NO STREAMLIT -------------------------------------------
+# SETUP DA PAGINA NO STREAMLIT ------------------------------------------------------------------------------------------
 st.set_page_config(
     page_title="GeoLog",
     page_icon="🚚",
@@ -16,17 +16,31 @@ st.set_page_config(
 )
 
 
-# SEEDS ------------------------------------------------------------------
+# SEEDS -----------------------------------------------------------------------------------------------------------------
 MOTORISTAS = [
     (1, "Carlos Andrade", "123456789", "Ativo"),
     (2, "Mariana Silva", "987654321", "Ativo"),
-    (3, "Roberto Souza", "456789123", "Em Descanso")
+    (3, "Roberto Souza", "456789123", "Em Descanso"),
+    (4, "Ana Oliveira", "321654987", "Ativo"),
+    (5, "Lucas Santos", "654987321", "Ativo"),
+    (6, "Fernanda Costa", "789321654", "Em Descanso"),
+    (7, "Rafael Lima", "147258369", "Ativo"),
+    (8, "Juliana Alves", "369258147", "Ativo"),
+    (9, "Pedro Martins", "258369147", "Em Descanso"),
+    (10, "Camila Rodrigues", "741852963", "Ativo")
 ]
 
 VEICULOS = [
     (101, "ABC-1A23", "Volvo FH 540", 1),
     (102, "XYZ-9876", "Scania R450", 2),
-    (103, "KGB-4567", "Mercedes Actros", 3)
+    (103, "KGB-4567", "Mercedes Actros", 3),
+    (104, "DEF-2345", "Volvo FH 460", 4),
+    (105, "GHI-6789", "Scania R540", 5),
+    (106, "JKL-1122", "Mercedes Atego", 6),
+    (107, "MNO-3344", "Volvo VM 330", 7),
+    (108, "PQR-5566", "Scania P360", 8),
+    (109, "STU-7788", "Mercedes Axor", 9),
+    (110, "VWX-9900", "Volvo FH 500", 10)
 ]
 
 TELEMETRIA_SEED = [
@@ -121,11 +135,227 @@ TELEMETRIA_SEED = [
         "temperatura": 21.8,
         "velocidade": 15,
         "timestamp": "2026-09-11T10:05:00Z"
+    },
+    {
+        "veiculo_id": 104,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.860, -7.110]
+        },
+        "temperatura": 5.8,
+        "velocidade": 55,
+        "timestamp": "2026-09-11T10:00:00Z"
+    },
+    {
+        "veiculo_id": 104,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.861, -7.111]
+        },
+        "temperatura": 5.5,
+        "velocidade": 60,
+        "timestamp": "2026-09-11T10:10:00Z"
+    },
+    {
+        "veiculo_id": 104,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.862, -7.112]
+        },
+        "temperatura": 5.7,
+        "velocidade": 63,
+        "timestamp": "2026-09-11T10:20:00Z"
+    },
+
+    {
+        "veiculo_id": 105,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.880, -7.105]
+        },
+        "temperatura": 3.9,
+        "velocidade": 72,
+        "timestamp": "2026-09-11T10:05:00Z"
+    },
+    {
+        "veiculo_id": 105,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.881, -7.106]
+        },
+        "temperatura": 4.1,
+        "velocidade": 75,
+        "timestamp": "2026-09-11T10:15:00Z"
+    },
+    {
+        "veiculo_id": 105,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.882, -7.107]
+        },
+        "temperatura": 4.0,
+        "velocidade": 78,
+        "timestamp": "2026-09-11T10:25:00Z"
+    },
+
+    {
+        "veiculo_id": 106,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.845, -7.125]
+        },
+        "temperatura": 18.5,
+        "velocidade": 40,
+        "timestamp": "2026-09-11T09:45:00Z"
+    },
+    {
+        "veiculo_id": 106,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.846, -7.126]
+        },
+        "temperatura": 18.8,
+        "velocidade": 45,
+        "timestamp": "2026-09-11T09:55:00Z"
+    },
+    {
+        "veiculo_id": 106,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.847, -7.127]
+        },
+        "temperatura": 18.2,
+        "velocidade": 48,
+        "timestamp": "2026-09-11T10:05:00Z"
+    },
+
+    {
+        "veiculo_id": 107,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.900, -7.130]
+        },
+        "temperatura": 6.2,
+        "velocidade": 82,
+        "timestamp": "2026-09-11T10:00:00Z"
+    },
+    {
+        "veiculo_id": 107,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.901, -7.131]
+        },
+        "temperatura": 6.4,
+        "velocidade": 86,
+        "timestamp": "2026-09-11T10:10:00Z"
+    },
+    {
+        "veiculo_id": 107,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.902, -7.132]
+        },
+        "temperatura": 6.1,
+        "velocidade": 88,
+        "timestamp": "2026-09-11T10:20:00Z"
+    },
+
+    {
+        "veiculo_id": 108,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.820, -7.105]
+        },
+        "temperatura": 2.8,
+        "velocidade": 58,
+        "timestamp": "2026-09-11T10:05:00Z"
+    },
+    {
+        "veiculo_id": 108,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.821, -7.106]
+        },
+        "temperatura": 3.0,
+        "velocidade": 62,
+        "timestamp": "2026-09-11T10:15:00Z"
+    },
+    {
+        "veiculo_id": 108,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.822, -7.107]
+        },
+        "temperatura": 2.7,
+        "velocidade": 64,
+        "timestamp": "2026-09-11T10:25:00Z"
+    },
+
+    {
+        "veiculo_id": 109,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.940, -7.140]
+        },
+        "temperatura": 20.5,
+        "velocidade": 0,
+        "timestamp": "2026-09-11T09:45:00Z"
+    },
+    {
+        "veiculo_id": 109,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.941, -7.141]
+        },
+        "temperatura": 20.8,
+        "velocidade": 5,
+        "timestamp": "2026-09-11T09:55:00Z"
+    },
+    {
+        "veiculo_id": 109,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.942, -7.142]
+        },
+        "temperatura": 20.6,
+        "velocidade": 8,
+        "timestamp": "2026-09-11T10:05:00Z"
+    },
+
+    {
+        "veiculo_id": 110,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.890, -7.120]
+        },
+        "temperatura": -5.2,
+        "velocidade": 76,
+        "timestamp": "2026-09-11T10:00:00Z"
+    },
+    {
+        "veiculo_id": 110,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.891, -7.121]
+        },
+        "temperatura": -5.0,
+        "velocidade": 79,
+        "timestamp": "2026-09-11T10:10:00Z"
+    },
+    {
+        "veiculo_id": 110,
+        "location": {
+            "type": "Point",
+            "coordinates": [-34.892, -7.122]
+        },
+        "temperatura": -5.3,
+        "velocidade": 81,
+        "timestamp": "2026-09-11T10:20:00Z"
     }
 ]
 
 
-# INSTANCIACAO DO SQLITE -------------------------------------------------
+# INSTANCIACAO DO SQLITE ------------------------------------------------------------------------------------------------
 def init_sqlite():
     conn = sqlite3.connect("logitech.db")
     cursor = conn.cursor()
@@ -165,7 +395,7 @@ def init_sqlite():
     conn.close()
 
 
-# INSTANCIACAO DO MONGODB ------------------------------------------------
+# INSTANCIACAO DO MONGODB -----------------------------------------------------------------------------------------------
 def init_mongodb():
     client = MongoClient("mongodb://localhost:27017/")
 
@@ -179,6 +409,11 @@ def init_mongodb():
     if telemetria.count_documents({}) == 0:
         telemetria.insert_many(TELEMETRIA_SEED)
 
+    # para quando for inserir dados novos
+        # descomentar isso, comentar as duas linhas acima, e rodar o arquivo 
+    # telemetria.delete_many({})
+    # telemetria.insert_many(TELEMETRIA_SEED)
+
     return client, telemetria
 
 
@@ -186,7 +421,7 @@ init_sqlite()
 client, telemetria = init_mongodb()
 
 
-# FUNCOES ----------------------------------------------------------------
+# FUNCOES ---------------------------------------------------------------------------------------------------------------
 def buscar_veiculos_proximos(latitude, longitude, raio_km):
     raio_metros = raio_km * 1000
 
@@ -285,6 +520,7 @@ def criar_visao_unificada():
         latitude = registro["location"]["coordinates"][1]
 
         dados.append({
+            "veiculo_id": veiculo_id,
             "Nome do Motorista": veiculo["motorista"],
             "Placa": veiculo["placa"],
             "Última Temperatura": registro["temperatura"],
@@ -296,21 +532,53 @@ def criar_visao_unificada():
     return dados
 
 
-def calcular_kpis():
+def calcular_kpis(veiculos_filtrados=None):
     dados = criar_visao_unificada()
 
+    if veiculos_filtrados is not None:
+        ids = {
+            registro["veiculo_id"]
+            for registro in veiculos_filtrados
+        }
+
+        dados = [
+            registro
+            for registro in dados
+            if registro["veiculo_id"] in ids
+        ]
+
+    veiculos = buscar_veiculos_sqlite()
+
+    if veiculos_filtrados is not None:
+        ids = {
+            registro["veiculo_id"]
+            for registro in veiculos_filtrados
+        }
+
+        veiculos = [
+            veiculo
+            for veiculo in veiculos
+            if veiculo["veiculo_id"] in ids
+        ]
+
     total_frotas_ativas = sum(
-        1 for veiculo in buscar_veiculos_sqlite()
+        1
+        for veiculo in veiculos
         if veiculo["status"] == "Ativo"
     )
 
-    temperatura_media = sum(
-        registro["Última Temperatura"]
-        for registro in dados
-    ) / len(dados)
+    temperatura_media = (
+        sum(
+            registro["Última Temperatura"]
+            for registro in dados
+        ) / len(dados)
+        if dados
+        else 0
+    )
 
     alertas_velocidade = sum(
-        1 for registro in dados
+        1
+        for registro in dados
         if registro["Velocidade"] > 80
     )
 
@@ -354,9 +622,23 @@ def simular_movimentacao():
         telemetria.insert_one(nova_telemetria)
 
 
-def criar_grafico_temperatura():
+def criar_grafico_temperatura(veiculos_filtrados=None):
+    filtro = {}
+
+    if veiculos_filtrados is not None:
+        ids = [
+            registro["veiculo_id"]
+            for registro in veiculos_filtrados
+        ]
+
+        filtro = {
+            "veiculo_id": {
+                "$in": ids
+            }
+        }
+
     resultados = telemetria.find(
-        {},
+        filtro,
         {
             "_id": 0,
             "veiculo_id": 1,
@@ -391,8 +673,20 @@ def criar_grafico_temperatura():
     return grafico
 
 
-def criar_grafico_status():
+def criar_grafico_status(veiculos_filtrados=None):
     veiculos = buscar_veiculos_sqlite()
+
+    if veiculos_filtrados is not None:
+        ids = {
+            registro["veiculo_id"]
+            for registro in veiculos_filtrados
+        }
+
+        veiculos = [
+            veiculo
+            for veiculo in veiculos
+            if veiculo["veiculo_id"] in ids
+        ]
 
     status = {}
 
@@ -471,7 +765,7 @@ def criar_mapa(latitude, longitude, raio_km=None, resultados=None):
 
     return mapa
 
-# APP STREAMLIT ----------------------------------------------------------
+# APP STREAMLIT ---------------------------------------------------------------------------------------------------------
 if "resultados_busca" not in st.session_state:
     st.session_state.resultados_busca = None
 
@@ -479,6 +773,7 @@ if "busca_realizada" not in st.session_state:
     st.session_state.busca_realizada = False
 
 
+# SIDEBAR ---------------------------------------------------------------------------------------------------------------
 with st.sidebar:
     st.markdown(
         '<h1 style="font-size: 60px; margin-top: -50px">GeoLog</h1>',
@@ -511,22 +806,32 @@ with st.sidebar:
         step=1.0
     )
 
-    buscar = st.button(
-        "🔎 Buscar veículos",
-        use_container_width=True
-    )
+    col1, col2 = st.columns(2)
 
-    limpar = st.button(
-        "🗑️ Limpar busca",
-        use_container_width=True
-    )
+    with col1:
+        buscar = st.button(
+            "🔎 Buscar",
+            use_container_width=True
+        )
+
+    with col2:
+        limpar = st.button(
+            "🗑️ Limpar",
+            use_container_width=True
+        )
 
     simular = st.button(
         "🚚 Simular Movimentação",
         use_container_width=True
     )
 
+    filtro_dashboard = st.radio(
+        "Mostrar dados de:",
+        ["Todos os veículos", "Veículos da busca"]
+    )
 
+
+# EXPOSICAO DOS RESULTADOS ----------------------------------------------------------------------------------------------
 if buscar:
     st.session_state.resultados_busca = buscar_veiculos_proximos(
         latitude,
@@ -581,14 +886,25 @@ if st.session_state.busca_realizada:
     st.subheader("Resultado da busca")
 
     st.write(
-        f"Veículos encontrados: {len(resultados)}"
+        f"Veículos encontrados na área: {len(resultados)}"
     )
 
 
-# KPIs -------------------------------------------------------------------
+# KPIs ------------------------------------------------------------------------------------------------------------------
+if filtro_dashboard == "Veículos da busca" and st.session_state.busca_realizada:
+    veiculos_dashboard = st.session_state.resultados_busca
+else:
+    veiculos_dashboard = None
+
+
+st.divider()
+
+
 st.subheader("Indicadores")
 
-total_frotas_ativas, temperatura_media, alertas_velocidade = calcular_kpis()
+total_frotas_ativas, temperatura_media, alertas_velocidade = calcular_kpis(
+    veiculos_dashboard
+)
 
 col1, col2, col3 = st.columns(3)
 
@@ -611,28 +927,29 @@ with col3:
     )
 
 
-# GRAFICOS ---------------------------------------------------------------
-st.subheader("Gráficos")
-
+# GRAFICOS --------------------------------------------------------------------------------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
-    grafico_temperatura = criar_grafico_temperatura()
+    grafico_temperatura = criar_grafico_temperatura(veiculos_dashboard)
     st.plotly_chart(
         grafico_temperatura,
         use_container_width=True
     )
 
 with col2:
-    grafico_status = criar_grafico_status()
+    grafico_status = criar_grafico_status(veiculos_dashboard)
     st.plotly_chart(
         grafico_status,
         use_container_width=True
     )
 
 
-# JOIN POLIGLOTA ---------------------------------------------------------
-st.subheader("Join poliglota (motorista + veículo)")
+st.divider()
+
+
+# JOIN POLIGLOTA --------------------------------------------------------------------------------------------------------
+st.subheader("Relação geral motorista-veículo")
 
 dados_unificados = criar_visao_unificada()
 
